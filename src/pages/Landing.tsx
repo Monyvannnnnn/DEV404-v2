@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Code2, Zap, Palette, Layers, ArrowRight, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import StarBackground from "@/components/chat/StarBackground";
-import { ThemeToggle } from "@/components/theme/ThemeToggle";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -16,6 +17,12 @@ const stagger = {
 };
 
 const Landing = () => {
+  const { setTheme } = useTheme();
+
+  useEffect(() => {
+    setTheme("dark");
+  }, [setTheme]);
+
   const features = [
     {
       icon: Code2,
@@ -56,7 +63,6 @@ const Landing = () => {
             <span className="font-bold text-xl">DEV404</span>
           </motion.div>
           <nav className="flex items-center gap-4">
-            <ThemeToggle />
             <Link to="/app">
               <Button variant="ghost">Launch App</Button>
             </Link>
