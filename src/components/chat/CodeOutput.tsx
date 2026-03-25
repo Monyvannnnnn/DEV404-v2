@@ -340,7 +340,7 @@ const CodeOutput = ({ visible, generatedCode }: CodeOutputProps) => {
           </div>
         </div>
 
-        <div className="flex min-w-0 flex-wrap items-center justify-between gap-2 sm:justify-end">
+        <div className="flex min-w-0 flex-nowrap items-center justify-between gap-2 sm:flex-wrap sm:justify-end">
           <div className="flex min-w-0 items-center gap-1 rounded-xl border border-white/5 bg-white/5 p-1 sm:gap-1.5">
             <button
               onClick={() => setViewMode("preview")}
@@ -364,7 +364,7 @@ const CodeOutput = ({ visible, generatedCode }: CodeOutputProps) => {
             </button>
           </div>
 
-          <div className="flex shrink-0 items-center gap-1">
+          <div className="flex shrink-0 flex-nowrap items-center gap-1">
             <button
               onClick={handleVisit}
               className="inline-flex h-8 w-8 items-center justify-center rounded-xl border border-white/5 bg-white/5 text-muted-foreground hover:text-foreground sm:h-9 sm:w-9"
@@ -437,14 +437,14 @@ const CodeOutput = ({ visible, generatedCode }: CodeOutputProps) => {
                   {resolvedActiveTab}
                 </div>
               </div>
-              <div className="flex gap-2 overflow-x-auto border-b border-white/5 px-3 py-3 sm:px-5">
+              <div className="flex gap-2 overflow-x-auto border-b border-white/5 px-3 py-3 sm:px-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                 {availableTabs.map((tab) => (
                   <button
                     key={tab}
                     type="button"
                     onClick={() => setActiveTab(tab)}
                     className={cn(
-                      "shrink-0 rounded-full px-2.5 py-2 text-center text-[10px] font-bold transition-all sm:min-w-[112px] sm:px-4 sm:text-[12px]",
+                      "shrink-0 rounded-full px-3 py-2.5 text-center text-[11px] font-bold transition-all sm:min-w-[112px] sm:px-4 sm:text-[12px] min-w-[70px]",
                       resolvedActiveTab === tab ? "bg-white/10 text-white shadow-sm" : "text-white/40 hover:text-white/60"
                     )}
                   >
