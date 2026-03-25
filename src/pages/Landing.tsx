@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Code2, Zap, Palette, Layers, ArrowRight, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import StarBackground from "@/components/chat/StarBackground";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -51,12 +52,11 @@ const Landing = () => {
             transition={{ duration: 0.5 }}
             className="flex items-center gap-2"
           >
-            <div className="w-8 h-8 rounded-lg bg-primary/20 border border-primary/20 flex items-center justify-center">
-              <span className="text-primary font-bold text-sm">D</span>
-            </div>
+            <img src="/favicon.svg" alt="DEV404" className="w-8 h-8" />
             <span className="font-bold text-xl">DEV404</span>
           </motion.div>
           <nav className="flex items-center gap-4">
+            <ThemeToggle />
             <Link to="/app">
               <Button variant="ghost">Launch App</Button>
             </Link>
@@ -219,9 +219,7 @@ const Landing = () => {
             viewport={{ once: true }}
             className="flex items-center gap-2"
           >
-            <div className="w-6 h-6 rounded bg-primary/20 border border-primary/20 flex items-center justify-center">
-              <span className="text-primary font-bold text-xs">D</span>
-            </div>
+            <img src="/favicon.svg" alt="DEV404" className="w-6 h-6" />
             <span className="font-semibold">DEV404</span>
           </motion.div>
           <p className="text-sm text-muted-foreground">
