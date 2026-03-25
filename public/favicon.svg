@@ -1,0 +1,49 @@
+<svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="150" cy="150" r="140" fill="#0b1c1f"/>
+
+  <!-- Glow effect -->
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- DEV404 -->
+  <text x="150" y="135"
+        text-anchor="middle"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="40"
+        fill="#7ef9e2"
+        letter-spacing="3"
+        filter="url(#glow)">
+    DEV404
+  </text>
+
+  <!-- AI Badge -->
+  <rect x="110" y="150" rx="20" ry="20" width="80" height="40"
+        fill="none"
+        stroke="#00e5c0"
+        stroke-width="2"/>
+  <text x="150" y="175"
+        text-anchor="middle"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="18"
+        fill="#00e5c0">
+    AI
+  </text>
+
+  <!-- Subtitle -->
+  <text x="150" y="225"
+        text-anchor="middle"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="12"
+        fill="#7aa6a3"
+        letter-spacing="4">
+    CREATIVE CODE LAB
+  </text>
+</svg>
