@@ -1,5 +1,6 @@
 import { Menu, PanelLeftClose, PanelLeftOpen } from "lucide-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import BrandLogo from "@/components/chat/BrandLogo";
 import ChatSidebar from "@/components/chat/ChatSidebar";
@@ -15,6 +16,7 @@ interface ChatAppShellProps {
 const ChatAppShell = ({ chat }: ChatAppShellProps) => {
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const [desktopSidebarOpen, setDesktopSidebarOpen] = useState(true);
+  const navigate = useNavigate();
   const {
     chats,
     activeChat,
@@ -62,7 +64,7 @@ const ChatAppShell = ({ chat }: ChatAppShellProps) => {
           className="flex h-full w-[260px] flex-col overflow-hidden"
         >
           <div className="flex items-center justify-between border-b border-white/5 p-5">
-            <BrandLogo showIcon={false} />
+            <BrandLogo showIcon={false} onClick={() => navigate("/")} />
             <motion.button
               whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,0.05)" }}
               whileTap={{ scale: 0.9 }}
@@ -107,7 +109,7 @@ const ChatAppShell = ({ chat }: ChatAppShellProps) => {
             >
               <Menu size={20} />
             </motion.button>
-            <BrandLogo showIcon={false} />
+            <BrandLogo showIcon={false} onClick={() => navigate("/")} />
           </div>
           <ThemeToggle />
         </header>
@@ -165,7 +167,7 @@ const ChatAppShell = ({ chat }: ChatAppShellProps) => {
               className="fixed inset-y-0 left-0 z-50 flex w-[280px] flex-col border-r border-white/5 bg-card/95 p-5 shadow-2xl lg:hidden"
             >
               <div className="mb-8 flex items-center justify-between">
-                <BrandLogo showIcon={false} />
+                <BrandLogo showIcon={false} onClick={() => navigate("/")} />
                 <button
                   onClick={() => setMobileSidebarOpen(false)}
                   className="rounded-xl p-2 text-muted-foreground/60"
