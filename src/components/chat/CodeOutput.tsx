@@ -320,22 +320,22 @@ const CodeOutput = ({ visible, generatedCode }: CodeOutputProps) => {
             <button
               onClick={() => setDeviceMode("desktop")}
               className={cn(
-                "rounded-md p-1.5 transition-all",
+                "inline-flex h-8 w-8 items-center justify-center rounded-lg transition-all",
                 deviceMode === "desktop" ? "bg-primary text-primary-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"
               )}
               title="Desktop View"
             >
-              <Monitor size={14} />
+              <Monitor size={16} />
             </button>
             <button
               onClick={() => setDeviceMode("mobile")}
               className={cn(
-                "rounded-md p-1.5 transition-all",
+                "inline-flex h-8 w-8 items-center justify-center rounded-lg transition-all",
                 deviceMode === "mobile" ? "bg-primary text-primary-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"
               )}
               title="Mobile View"
             >
-              <Smartphone size={14} />
+              <Smartphone size={16} />
             </button>
           </div>
         </div>
