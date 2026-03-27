@@ -41,9 +41,9 @@ const ChatAppShell = ({ chat }: ChatAppShellProps) => {
   } = chat;
 
   return (
-    <div className="relative flex h-screen w-full overflow-hidden bg-background font-sans">
+    <div className="relative flex h-screen w-full overflow-hidden font-sans">
       <StarBackground />
-      <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_top_left,hsl(var(--primary)/0.05),transparent_40%),radial-gradient(circle_at_bottom_right,hsl(190_80%_60%/0.03),transparent_30%)]" />
+      <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_top_left,hsl(var(--primary)/0.1),transparent_34%),radial-gradient(circle_at_bottom_right,hsl(190_80%_60%/0.06),transparent_28%)]" />
 
       <motion.aside
         initial={false}
@@ -52,7 +52,7 @@ const ChatAppShell = ({ chat }: ChatAppShellProps) => {
           opacity: desktopSidebarOpen ? 1 : 0,
         }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        className="relative z-30 hidden h-full shrink-0 overflow-hidden border-r border-white/5 bg-card/20 backdrop-blur-3xl lg:block"
+        className="relative z-30 hidden h-full shrink-0 overflow-hidden bg-background/20 backdrop-blur-xl lg:block"
       >
         <motion.div
           initial={false}
@@ -63,13 +63,13 @@ const ChatAppShell = ({ chat }: ChatAppShellProps) => {
           transition={{ type: "spring", stiffness: 320, damping: 32 }}
           className="flex h-full w-[260px] flex-col overflow-hidden"
         >
-          <div className="flex items-center justify-between border-b border-white/5 p-5">
+          <div className="flex items-center justify-between p-5">
             <BrandLogo showIcon={false} onClick={() => navigate("/")} />
             <motion.button
               whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,0.05)" }}
               whileTap={{ scale: 0.9 }}
               onClick={() => setDesktopSidebarOpen(false)}
-              className="rounded-xl p-2 text-muted-foreground/60 hover:text-foreground"
+              className="rounded-lg p-2 text-muted-foreground/60 hover:text-foreground"
             >
               <PanelLeftClose size={18} />
             </motion.button>
@@ -90,8 +90,8 @@ const ChatAppShell = ({ chat }: ChatAppShellProps) => {
             />
           </div>
 
-          <div className="border-t border-white/5 p-5">
-            <div className="flex items-center justify-between rounded-2xl bg-white/[0.03] p-2">
+          <div className="p-5 pt-0">
+            <div className="flex items-center justify-between rounded-lg bg-background/20 p-2">
               <span className="pl-3 text-[11px] font-bold uppercase tracking-widest text-muted-foreground/40">Theme</span>
               <ThemeToggle />
             </div>
@@ -100,12 +100,12 @@ const ChatAppShell = ({ chat }: ChatAppShellProps) => {
       </motion.aside>
 
       <main className="relative flex min-w-0 flex-1 flex-col">
-        <header className="flex h-16 items-center justify-between border-b border-white/5 bg-background/40 px-4 backdrop-blur-xl lg:hidden">
+        <header className="flex h-16 items-center justify-between bg-transparent px-4 lg:hidden">
           <div className="flex items-center gap-4">
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={() => setMobileSidebarOpen(true)}
-              className="rounded-xl border border-white/10 bg-white/5 p-2 text-muted-foreground"
+              className="rounded-lg bg-white/5 p-2 text-muted-foreground"
             >
               <Menu size={20} />
             </motion.button>
@@ -122,7 +122,7 @@ const ChatAppShell = ({ chat }: ChatAppShellProps) => {
               exit={{ x: -20, opacity: 0 }}
               whileHover={{ scale: 1.05, x: 5 }}
               onClick={() => setDesktopSidebarOpen(true)}
-              className="fixed left-6 top-6 z-40 hidden rounded-2xl border border-white/10 bg-card/80 p-3 text-primary shadow-2xl shadow-primary/10 backdrop-blur-xl lg:block"
+              className="fixed left-6 top-6 z-40 hidden rounded-lg bg-background/30 p-3 text-primary shadow-[0_18px_40px_rgba(0,0,0,0.18)] backdrop-blur-xl lg:block"
               title="Open sidebar"
             >
               <PanelLeftOpen size={20} strokeWidth={2.5} />
@@ -164,13 +164,13 @@ const ChatAppShell = ({ chat }: ChatAppShellProps) => {
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed inset-y-0 left-0 z-50 flex w-[280px] flex-col border-r border-white/5 bg-card/95 p-5 shadow-2xl lg:hidden"
+              className="fixed inset-y-0 left-0 z-50 flex w-[280px] flex-col bg-background/90 p-5 shadow-2xl lg:hidden"
             >
               <div className="mb-8 flex items-center justify-between">
                 <BrandLogo showIcon={false} onClick={() => navigate("/")} />
                 <button
                   onClick={() => setMobileSidebarOpen(false)}
-                  className="rounded-xl p-2 text-muted-foreground/60"
+                  className="rounded-lg p-2 text-muted-foreground/60"
                 >
                   <PanelLeftClose size={20} />
                 </button>

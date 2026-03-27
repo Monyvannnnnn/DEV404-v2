@@ -100,7 +100,7 @@ const ChatSidebar = ({
           whileHover={{ scale: 1.02, filter: "brightness(1.1)" }}
           whileTap={{ scale: 0.98 }}
           onClick={onNewChat}
-          className="group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-2xl bg-primary px-4 py-3 text-[14px] font-bold text-primary-foreground shadow-[0_0_20px_rgba(var(--primary),0.1)] transition-shadow hover:shadow-[0_0_30px_rgba(var(--primary),0.2)]"
+          className="group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-md bg-primary px-4 py-3 text-[14px] font-bold text-primary-foreground shadow-[0_18px_40px_rgba(0,0,0,0.16)] transition-shadow hover:shadow-[0_24px_50px_rgba(0,0,0,0.2)]"
         >
           <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/10 opacity-0 transition-opacity group-hover:opacity-100" />
           <MessageSquarePlus size={18} strokeWidth={2.5} />
@@ -113,7 +113,7 @@ const ChatSidebar = ({
             value={search}
             onChange={(e) => onSearchChange(e.target.value)}
             placeholder="Search threads"
-            className="w-full rounded-2xl border border-white/5 bg-white/[0.03] py-2.5 pl-10 pr-4 text-[13px] text-foreground outline-none transition-all placeholder:text-muted-foreground/30 focus:bg-white/[0.06] focus:ring-1 focus:ring-primary/20"
+            className="w-full rounded-md bg-background/20 py-2.5 pl-10 pr-4 text-[13px] text-foreground outline-none transition-all placeholder:text-muted-foreground/30 focus:bg-background/30 focus:ring-1 focus:ring-primary/20"
           />
         </div>
       </div>
@@ -127,7 +127,7 @@ const ChatSidebar = ({
               exit={{ opacity: 0, y: -10 }}
               className="mt-12 text-center"
             >
-              <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/[0.03] text-muted-foreground/20">
+              <div className="inline-flex h-12 w-12 items-center justify-center rounded-md bg-background/20 text-muted-foreground/20">
                 <Search size={24} />
               </div>
               <p className="mt-4 text-[12px] font-medium text-muted-foreground/40">No threads found</p>
@@ -143,7 +143,7 @@ const ChatSidebar = ({
                     key={label}
                     className="space-y-2"
                   >
-                    <h3 className="sticky top-0 z-10 bg-transparent px-3 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground/30 backdrop-blur-sm">
+                    <h3 className="sticky top-0 z-10 bg-transparent px-3 text-[10px] font-black uppercase tracking-[0.2em] text-foreground/75">
                       {label}
                     </h3>
                     <div className="space-y-1">
@@ -157,10 +157,10 @@ const ChatSidebar = ({
                             exit={{ opacity: 0, scale: 0.95 }}
                             key={chat.chatId}
                             className={cn(
-                              "group relative flex items-center rounded-[18px] transition-all duration-300",
+                              "group relative flex items-center rounded-md transition-all duration-300",
                               isActive 
-                                ? "bg-primary/[0.08] text-foreground ring-1 ring-primary/20 shadow-[0_0_20px_rgba(var(--primary),0.05)]" 
-                                : "text-muted-foreground hover:bg-white/[0.04] hover:text-foreground"
+                                ? "bg-background/25 text-foreground ring-1 ring-primary/20 shadow-[0_14px_34px_rgba(0,0,0,0.14)]" 
+                                : "text-muted-foreground hover:bg-background/18 hover:text-foreground"
                             )}
                           >
                             {isActive && (
@@ -183,7 +183,7 @@ const ChatSidebar = ({
                               <button
                                 type="button"
                                 onClick={(e) => { e.stopPropagation(); setRenameTarget(chat); }}
-                                className="rounded-xl p-2 transition-colors hover:bg-white/10"
+                                className="rounded-md p-2 transition-colors hover:bg-white/10"
                                 title="Rename"
                               >
                                 <Pencil size={13} />
@@ -191,7 +191,7 @@ const ChatSidebar = ({
                               <button
                                 type="button"
                                 onClick={(e) => { e.stopPropagation(); onDownloadChat(chat); }}
-                                className="rounded-xl p-2 transition-colors hover:bg-white/10"
+                                className="rounded-md p-2 transition-colors hover:bg-white/10"
                                 title="Export"
                               >
                                 <Download size={13} />
@@ -199,7 +199,7 @@ const ChatSidebar = ({
                               <button
                                 type="button"
                                 onClick={(e) => { e.stopPropagation(); setDeleteTarget(chat); }}
-                                className="rounded-xl p-2 text-destructive/40 transition-colors hover:bg-destructive/10 hover:text-destructive"
+                                className="rounded-md p-2 text-destructive/40 transition-colors hover:bg-destructive/10 hover:text-destructive"
                                 title="Delete"
                               >
                                 <Trash2 size={13} />
@@ -229,7 +229,7 @@ const ChatSidebar = ({
       </div>
 
       <Dialog open={Boolean(renameTarget)} onOpenChange={(open) => !open && setRenameTarget(null)}>
-        <DialogContent className="max-w-[400px] border-white/5 bg-card/95 p-6 shadow-2xl backdrop-blur-3xl sm:rounded-[28px]">
+        <DialogContent className="max-w-[400px] bg-background/90 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.22)] backdrop-blur-xl sm:rounded-lg">
           <DialogHeader className="gap-2">
             <DialogTitle className="text-xl font-bold">Rename Thread</DialogTitle>
           </DialogHeader>
@@ -238,16 +238,16 @@ const ChatSidebar = ({
               value={draftTitle}
               onChange={(e) => setDraftTitle(e.target.value)}
               placeholder="e.g. Dashboard Concept"
-              className="w-full rounded-2xl border border-white/10 bg-white/5 px-5 py-3.5 text-sm font-medium outline-none transition-all focus:border-primary/40 focus:ring-1 focus:ring-primary/20"
+              className="w-full rounded-md bg-background/20 px-5 py-3.5 text-sm font-medium outline-none transition-all focus:ring-1 focus:ring-primary/20"
               autoFocus
               onKeyDown={(e) => e.key === 'Enter' && handleRenameConfirm()}
             />
           </div>
           <DialogFooter className="gap-2 sm:gap-0">
-            <Button variant="ghost" className="rounded-2xl hover:bg-white/5" onClick={() => setRenameTarget(null)}>
+            <Button variant="ghost" className="rounded-md hover:bg-white/5" onClick={() => setRenameTarget(null)}>
               Cancel
             </Button>
-            <Button className="rounded-2xl bg-primary px-6" onClick={handleRenameConfirm}>
+            <Button className="rounded-md bg-primary px-6" onClick={handleRenameConfirm}>
               Save Changes
             </Button>
           </DialogFooter>
@@ -255,7 +255,7 @@ const ChatSidebar = ({
       </Dialog>
 
       <AlertDialog open={Boolean(deleteTarget)} onOpenChange={(open) => !open && setDeleteTarget(null)}>
-        <AlertDialogContent className="max-w-[400px] border-white/5 bg-card/95 p-6 shadow-2xl backdrop-blur-3xl sm:rounded-[28px]">
+        <AlertDialogContent className="max-w-[400px] bg-background/90 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.22)] backdrop-blur-xl sm:rounded-lg">
           <AlertDialogHeader className="gap-2">
             <AlertDialogTitle className="text-xl font-bold text-destructive">Delete Thread?</AlertDialogTitle>
             <AlertDialogDescription className="text-[13px] leading-relaxed text-muted-foreground/70">
@@ -263,10 +263,10 @@ const ChatSidebar = ({
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter className="mt-4 gap-2 sm:gap-0">
-            <AlertDialogCancel className="rounded-2xl border-white/10 bg-white/5 hover:bg-white/10">
+            <AlertDialogCancel className="rounded-md border-white/10 bg-white/5 hover:bg-white/10">
               Go Back
             </AlertDialogCancel>
-            <AlertDialogAction onClick={handleDeleteConfirm} className="rounded-2xl bg-destructive text-destructive-foreground hover:bg-destructive/90">
+            <AlertDialogAction onClick={handleDeleteConfirm} className="rounded-md bg-destructive text-destructive-foreground hover:bg-destructive/90">
               Confirm Delete
             </AlertDialogAction>
           </AlertDialogFooter>
@@ -274,9 +274,9 @@ const ChatSidebar = ({
       </AlertDialog>
 
       <AlertDialog open={isClearHistoryOpen} onOpenChange={setIsClearHistoryOpen}>
-        <AlertDialogContent className="max-w-[420px] overflow-hidden border border-white/10 bg-card/90 p-0 shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur-3xl sm:rounded-[30px]">
-          <div className="border-b border-white/5 bg-[radial-gradient(circle_at_top,hsl(var(--destructive)/0.18),transparent_55%),linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0))] px-6 pb-5 pt-6">
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl border border-destructive/20 bg-destructive/10 text-destructive shadow-[0_0_30px_rgba(220,38,38,0.15)]">
+        <AlertDialogContent className="max-w-[420px] overflow-hidden bg-background/90 p-0 shadow-[0_24px_80px_rgba(0,0,0,0.22)] backdrop-blur-xl sm:rounded-lg">
+          <div className="bg-[radial-gradient(circle_at_top,hsl(var(--destructive)/0.12),transparent_55%),linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0))] px-6 pb-5 pt-6">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-md bg-destructive/10 text-destructive shadow-[0_0_30px_rgba(220,38,38,0.12)]">
               <Trash2 size={18} />
             </div>
             <AlertDialogHeader className="gap-2 text-left">
@@ -289,12 +289,12 @@ const ChatSidebar = ({
             </AlertDialogHeader>
           </div>
           <div className="px-6 pb-6 pt-5">
-            <div className="rounded-2xl border border-white/5 bg-white/[0.03] px-4 py-3 text-[12px] font-medium text-muted-foreground/70">
+            <div className="rounded-md bg-background/20 px-4 py-3 text-[12px] font-medium text-muted-foreground/70">
               This action cannot be undone.
             </div>
           </div>
-          <AlertDialogFooter className="border-t border-white/5 bg-white/[0.02] px-6 py-4 sm:justify-between">
-            <AlertDialogCancel className="rounded-2xl border-white/10 bg-white/5 hover:bg-white/10">
+          <AlertDialogFooter className="bg-white/[0.02] px-6 py-4 sm:justify-between">
+            <AlertDialogCancel className="rounded-md border-white/10 bg-white/5 hover:bg-white/10">
               Keep History
             </AlertDialogCancel>
             <AlertDialogAction
@@ -302,7 +302,7 @@ const ChatSidebar = ({
                 onClearHistory();
                 setIsClearHistoryOpen(false);
               }}
-              className="rounded-2xl bg-destructive px-5 text-destructive-foreground shadow-[0_10px_30px_rgba(220,38,38,0.25)] hover:bg-destructive/90"
+              className="rounded-md bg-destructive px-5 text-destructive-foreground shadow-[0_10px_30px_rgba(220,38,38,0.25)] hover:bg-destructive/90"
             >
               Clear Everything
             </AlertDialogAction>

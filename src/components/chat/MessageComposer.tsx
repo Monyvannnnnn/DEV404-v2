@@ -42,9 +42,9 @@ const MessageComposer = ({
   return (
     <div className="sticky bottom-0 z-20 w-full px-3 pb-[max(env(safe-area-inset-bottom),1.25rem)] pt-2 sm:px-4 sm:pb-6">
       <div className="mx-auto max-w-[800px]">
-        <div className="relative overflow-hidden rounded-[24px] border border-white/5 bg-card/70 shadow-2xl backdrop-blur-2xl transition-all duration-300 focus-within:border-primary/20 focus-within:ring-1 focus-within:ring-primary/10">
+        <div className="relative overflow-hidden rounded-xl border border-primary/25 bg-background/30 shadow-[0_18px_60px_rgba(0,0,0,0.18)] backdrop-blur-xl transition-all duration-300 focus-within:border-primary/40 focus-within:ring-1 focus-within:ring-primary/20">
           {isEditing && (
-            <div className="flex items-center justify-between border-b border-white/5 bg-primary/5 px-4 py-2 text-[11px] text-primary">
+            <div className="flex items-center justify-between bg-primary/5 px-4 py-2 text-[11px] text-primary">
               <div className="flex items-center gap-2 font-medium">
                 <PencilLine size={12} />
                 Editing message
@@ -77,7 +77,7 @@ const MessageComposer = ({
               className="min-h-[44px] w-full resize-none bg-transparent px-3 py-2.5 text-[16px] leading-relaxed text-foreground outline-none placeholder:text-muted-foreground/40 scrollbar-none sm:min-h-[56px] sm:py-3 sm:text-[14px]"
             />
 
-            <div className="flex items-center justify-between gap-3 border-t border-white/5 px-1.5 pt-1.5 sm:px-2 sm:pt-2">
+            <div className="flex items-center justify-between gap-3 px-1.5 pt-1.5 sm:px-2 sm:pt-2">
               <div className="flex items-center gap-1">
                 <ModelSelector selected={aiModel} onSelect={onModelChange} />
               </div>
@@ -87,7 +87,7 @@ const MessageComposer = ({
                 onClick={onSend}
                 disabled={isGenerating || !value.trim()}
                 className={cn(
-                  "flex h-9 w-9 items-center justify-center rounded-full transition-all duration-200",
+                  "flex h-9 w-9 items-center justify-center rounded-lg transition-all duration-200",
                   isGenerating || !value.trim()
                     ? "bg-white/5 text-muted-foreground/20"
                     : "bg-primary text-primary-foreground shadow-lg shadow-primary/20 hover:scale-105 active:scale-95"

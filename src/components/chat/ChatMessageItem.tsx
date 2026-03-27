@@ -12,6 +12,7 @@ interface ChatMessageItemProps {
 
 const ChatMessageItem = ({ message, onCopy, onEdit }: ChatMessageItemProps) => {
   const isUser = message.role === "user";
+  const isGeneratedResultLabel = message.role === "assistant" && Boolean(message.generatedCode);
   const visibleContent =
     message.generatedCode && message.role === "assistant"
       ? stripGeneratedCodeBlock(message.content)
@@ -41,8 +42,11 @@ const ChatMessageItem = ({ message, onCopy, onEdit }: ChatMessageItemProps) => {
               className={cn(
                 "whitespace-pre-wrap break-words text-[14px] leading-relaxed shadow-sm transition-all duration-200",
                 isUser
-                  ? "rounded-[16px] rounded-tr-[4px] bg-primary px-5 py-4 text-primary-foreground"
-                  : "rounded-[16px] rounded-tl-[4px] border border-white/5 bg-card/40 px-6 py-5 text-foreground/90 backdrop-blur-sm",
+                  ? "rounded-xl rounded-tr-sm bg-primary px-5 py-4 text-primary-foreground"
+                  : cn(
+                      "rounded-xl rounded-tl-sm bg-background/20 px-6 py-5 text-foreground/90 backdrop-blur-sm",
+                      isGeneratedResultLabel && "border border-primary/25",
+                    ),
               )}
             >
               {visibleContent}
@@ -76,7 +80,7 @@ const ChatMessageItem = ({ message, onCopy, onEdit }: ChatMessageItemProps) => {
 
         {message.imageUrl && (
           <div className={cn(
-            "mt-3 overflow-hidden rounded-2xl border border-white/5 bg-card/30 shadow-lg",
+            "mt-3 overflow-hidden rounded-xl bg-background/20 shadow-lg",
             isUser ? "ml-auto" : "mr-auto"
           )}>
             <img
@@ -88,7 +92,7 @@ const ChatMessageItem = ({ message, onCopy, onEdit }: ChatMessageItemProps) => {
         )}
 
         {showLoadingDots && (
-          <div className="mt-2 inline-flex items-center gap-1.5 rounded-2xl border border-white/5 bg-card/30 px-5 py-4 text-primary backdrop-blur-md">
+          <div className="mt-2 inline-flex items-center gap-1.5 rounded-xl bg-background/20 px-5 py-4 text-primary backdrop-blur-md">
             {[0, 1, 2].map((dot) => (
               <span
                 key={dot}

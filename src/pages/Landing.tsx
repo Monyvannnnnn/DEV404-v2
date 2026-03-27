@@ -47,11 +47,11 @@ const Landing = () => {
   ];
 
   return (
-    <div className="min-h-screen overflow-hidden relative">
+    <div className="relative min-h-screen overflow-hidden">
       <StarBackground />
-      <div className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(circle_at_top_left,hsl(var(--primary)/0.08),transparent_40%),radial-gradient(circle_at_bottom_right,hsl(190_80%_60%/0.05),transparent_30%)]" />
-      
-      <header className="border-b/50 relative">
+      <div className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(circle_at_top_left,hsl(var(--primary)/0.12),transparent_34%),radial-gradient(circle_at_bottom_right,hsl(190_80%_60%/0.08),transparent_28%)]" />
+
+      <header className="relative bg-transparent shadow-none backdrop-blur-0">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between relative">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
@@ -71,24 +71,25 @@ const Landing = () => {
       </header>
 
       <main>
-        <section className="py-24 px-4 relative">
+        <section className="relative px-4 py-24">
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <motion.div 
+            <motion.div
               animate={{ 
                 scale: [1, 1.1, 1],
-                opacity: [0.3, 0.5, 0.3]
+                opacity: [0.16, 0.24, 0.16]
               }}
               transition={{ duration: 4, repeat: Infinity }}
-              className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px]" 
+              className="absolute top-[-8rem] left-[12%] h-[36rem] w-[36rem] rounded-full bg-primary/18 blur-[160px]"
             />
-            <motion.div 
+            <motion.div
               animate={{ 
                 scale: [1, 1.2, 1],
-                opacity: [0.2, 0.4, 0.2]
+                opacity: [0.12, 0.2, 0.12]
               }}
               transition={{ duration: 5, repeat: Infinity, delay: 1 }}
-              className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px]" 
+              className="absolute bottom-[-10rem] right-[10%] h-[30rem] w-[30rem] rounded-full bg-cyan-400/10 blur-[150px]"
             />
+            <div className="absolute inset-x-[18%] top-12 h-px bg-gradient-to-r from-transparent via-cyan-300/40 to-transparent" />
           </div>
           <div className="container mx-auto text-center max-w-4xl relative">
             <motion.div
@@ -137,9 +138,7 @@ const Landing = () => {
           </div>
         </section>
 
-        <section className="py-20 px-4 relative">
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center, hsl(var(--primary)/0.08), transparent_70%)] blur-3xl pointer-events-none" />
+        <section className="relative px-4 py-20">
           <div className="container mx-auto relative">
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
@@ -159,7 +158,7 @@ const Landing = () => {
             >
               {features.map((feature, index) => (
                 <motion.div key={index} variants={fadeInUp}>
-                  <Card className="bg-card/60 backdrop-blur-sm border-border/50 hover:border-primary/30 transition-all hover:scale-105 hover:shadow-[0_0_50px_hsl(var(--primary)/0.2)] h-[220px]">
+                  <Card className="h-[220px] border-transparent bg-card/55 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-transparent">
                     <CardContent className="pt-6">
                       <motion.div
                         animate={{ y: [-5, 5, -5] }}
@@ -179,8 +178,8 @@ const Landing = () => {
           </div>
         </section>
 
-        <section className="py-20 px-4 relative">
-          <div className="absolute inset-0 bg-gradient-to-t from-primary/5 to-transparent pointer-events-none" />
+        <section className="relative px-4 py-20">
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/6 via-transparent to-transparent" />
           <div className="container mx-auto text-center max-w-3xl relative">
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
@@ -217,7 +216,7 @@ const Landing = () => {
         </section>
       </main>
 
-      <footer className="border-t/50 py-8 px-4 relative">
+      <footer className="relative bg-background/20 py-8 px-4 backdrop-blur-xl">
         <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4 relative">
           <motion.div 
             initial={{ opacity: 0 }}

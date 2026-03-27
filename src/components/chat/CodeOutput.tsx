@@ -274,10 +274,10 @@ const CodeOutput = ({ visible, generatedCode }: CodeOutputProps) => {
   const previewDocument = buildStandaloneHtml(generatedCode);
   const isMobileFrame = deviceMode === "mobile";
   const previewFrameClass = cn(
-    "mx-auto h-full w-full overflow-hidden bg-white transition-[max-width,box-shadow,border-color] duration-300 ease-out",
+    "mx-auto h-full w-full overflow-hidden rounded-lg bg-white transition-[max-width,box-shadow,border-color] duration-300 ease-out",
     isMobileFrame
-      ? "border-x border-black/5 shadow-2xl"
-      : "min-w-0 border border-black/5 shadow-[0_24px_80px_rgba(15,23,42,0.12)]",
+      ? "border border-primary/25 shadow-2xl"
+      : "min-w-0 border border-primary/25 shadow-[0_24px_80px_rgba(15,23,42,0.12)]",
   );
   const previewFrameStyle = {
     maxWidth: isMobileFrame ? "min(375px, 100%)" : "100%",
@@ -308,15 +308,15 @@ const CodeOutput = ({ visible, generatedCode }: CodeOutputProps) => {
   };
 
   return (
-    <div className="w-full max-w-full overflow-hidden rounded-[20px] border border-white/10 bg-card/70 shadow-2xl backdrop-blur-xl transition-[background-color,border-color,box-shadow] duration-300 sm:rounded-[28px]">
-      <div className="flex flex-col gap-3 border-b border-white/10 px-3 py-3 sm:px-4 sm:py-4 sm:flex-row sm:items-center sm:justify-between">
+    <div className="w-full max-w-full overflow-hidden rounded-xl border border-primary/25 bg-background/25 shadow-[0_18px_60px_rgba(0,0,0,0.18)] backdrop-blur-xl transition-[background-color,border-color,box-shadow] duration-300">
+      <div className="flex flex-col gap-3 border-b border-primary/25 px-3 py-3 sm:px-4 sm:py-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex min-w-0 items-center gap-3 sm:gap-4">
           <div>
             <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground/60">Workspace</div>
             <div className="mt-0.5 text-xs font-semibold text-foreground">Interactive Preview</div>
           </div>
           
-          <div className="hidden items-center gap-1 rounded-lg border border-white/5 bg-white/5 p-1 lg:flex">
+          <div className="hidden items-center gap-1 rounded-lg bg-white/5 p-1 lg:flex">
             <button
               onClick={() => setDeviceMode("desktop")}
               className={cn(
@@ -341,7 +341,7 @@ const CodeOutput = ({ visible, generatedCode }: CodeOutputProps) => {
         </div>
 
         <div className="flex min-w-0 flex-nowrap items-center justify-between gap-2 sm:flex-wrap sm:justify-end">
-          <div className="flex min-w-0 items-center gap-1 rounded-xl border border-white/5 bg-white/5 p-1 sm:gap-1.5">
+          <div className="flex min-w-0 items-center gap-1 rounded-lg bg-white/5 p-1 sm:gap-1.5">
             <button
               onClick={() => setViewMode("preview")}
               className={cn(
@@ -367,21 +367,21 @@ const CodeOutput = ({ visible, generatedCode }: CodeOutputProps) => {
           <div className="flex shrink-0 flex-nowrap items-center gap-1">
             <button
               onClick={handleVisit}
-              className="inline-flex h-8 w-8 items-center justify-center rounded-xl border border-white/5 bg-white/5 text-muted-foreground hover:text-foreground sm:h-9 sm:w-9"
+              className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-white/5 text-muted-foreground hover:text-foreground sm:h-9 sm:w-9"
               title="Visit Website"
             >
               <ExternalLink size={14} />
             </button>
             <button
               onClick={handleCopy}
-              className="inline-flex h-8 w-8 items-center justify-center rounded-xl border border-white/5 bg-white/5 text-muted-foreground hover:text-foreground sm:h-9 sm:w-9"
+              className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-white/5 text-muted-foreground hover:text-foreground sm:h-9 sm:w-9"
               title="Copy Code"
             >
               {copied ? <Check size={14} className="text-emerald-400" /> : <Copy size={14} />}
             </button>
             <button
               onClick={handleDownload}
-              className="inline-flex h-8 w-8 items-center justify-center rounded-xl border border-white/5 bg-white/5 text-muted-foreground hover:text-foreground sm:h-9 sm:w-9"
+              className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-white/5 text-muted-foreground hover:text-foreground sm:h-9 sm:w-9"
               title="Download ZIP"
             >
               <Download size={14} />
@@ -395,10 +395,10 @@ const CodeOutput = ({ visible, generatedCode }: CodeOutputProps) => {
           <div className="h-full w-full overflow-auto p-3 sm:p-4">
             <div
               className={cn(
-                "mx-auto w-full overflow-auto bg-white transition-all duration-300",
+                "mx-auto w-full overflow-auto rounded-lg bg-white transition-all duration-300",
                 isMobileFrame
-                  ? "border-x border-black/5 shadow-2xl"
-                  : "border border-black/5 shadow-[0_24px_80px_rgba(15,23,42,0.12)]"
+                  ? "border border-primary/25 shadow-2xl"
+                  : "border border-primary/25 shadow-[0_24px_80px_rgba(15,23,42,0.12)]"
               )}
               style={previewFrameStyle}
             >
@@ -406,7 +406,7 @@ const CodeOutput = ({ visible, generatedCode }: CodeOutputProps) => {
                 ref={previewIframeRef}
                 title="Preview"
                 srcDoc={previewDocument}
-                className="w-full border-0"
+                className="w-full rounded-lg border-0"
                 sandbox="allow-scripts allow-same-origin"
                 style={{
                   height: "100%",
@@ -419,15 +419,15 @@ const CodeOutput = ({ visible, generatedCode }: CodeOutputProps) => {
           <div className="h-full w-full overflow-y-auto overflow-x-hidden p-2 sm:p-4">
             <div
               className={cn(
-                "mx-auto flex min-h-full w-full min-w-0 flex-col overflow-hidden bg-[#0d1117] transition-[box-shadow,border-color] duration-300 ease-out",
+                "mx-auto flex min-h-full w-full min-w-0 flex-col overflow-hidden rounded-lg bg-[#0d1117] transition-[box-shadow,border-color] duration-300 ease-out",
                 isMobileFrame
-                  ? "max-w-full border border-black/5 shadow-[0_24px_80px_rgba(2,6,23,0.35)]"
+                  ? "max-w-full border border-primary/25 shadow-[0_24px_80px_rgba(2,6,23,0.35)]"
                   : previewFrameClass,
                 "!bg-[#0d1117]"
               )}
               style={isMobileFrame ? undefined : previewFrameStyle}
             >
-              <div className="flex items-center justify-between border-b border-white/5 bg-white/[0.03] px-3 py-2.5 sm:px-5">
+              <div className="flex items-center justify-between bg-white/[0.03] px-3 py-2.5 sm:px-5">
                 <div className="flex items-center gap-2">
                   <span className="h-2.5 w-2.5 rounded-full bg-rose-400/80" />
                   <span className="h-2.5 w-2.5 rounded-full bg-amber-300/80" />
@@ -437,7 +437,7 @@ const CodeOutput = ({ visible, generatedCode }: CodeOutputProps) => {
                   {resolvedActiveTab}
                 </div>
               </div>
-              <div className="flex gap-2 overflow-x-auto border-b border-white/5 px-3 py-3 sm:px-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              <div className="flex gap-2 overflow-x-auto px-3 py-3 sm:px-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                 {availableTabs.map((tab) => (
                   <button
                     key={tab}
@@ -453,7 +453,7 @@ const CodeOutput = ({ visible, generatedCode }: CodeOutputProps) => {
                 ))}
               </div>
               <div className="flex flex-1">
-                <div className="w-10 shrink-0 select-none border-r border-white/5 bg-black/20 px-1.5 py-2 text-right text-[10px] leading-5 text-white/25 sm:w-14 sm:px-3 sm:py-6 sm:text-[12px] sm:leading-8">
+                <div className="w-10 shrink-0 select-none bg-black/20 px-1.5 py-2 text-right text-[10px] leading-5 text-white/25 sm:w-14 sm:px-3 sm:py-6 sm:text-[12px] sm:leading-8">
                   {Array.from({ length: lineCount }, (_, index) => (
                     <div key={index}>{index + 1}</div>
                   ))}

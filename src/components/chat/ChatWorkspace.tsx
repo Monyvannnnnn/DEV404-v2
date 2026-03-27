@@ -60,8 +60,8 @@ const ChatWorkspace = ({
             </div>
           ) : (
             <div className="flex flex-1 items-center justify-center px-4">
-              <div className="w-full max-w-[600px] rounded-[32px] border border-white/5 bg-card/40 p-10 text-center shadow-2xl backdrop-blur-xl">
-                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+              <div className="w-full max-w-[600px] rounded-xl bg-background/20 p-10 text-center shadow-[0_18px_60px_rgba(0,0,0,0.18)] ring-1 ring-primary/20 backdrop-blur-md">
+                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-lg bg-primary/10 text-primary">
                   <Sparkles size={32} />
                 </div>
                 <h2 className="mt-8 text-3xl font-bold tracking-tight text-foreground">
